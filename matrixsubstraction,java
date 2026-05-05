@@ -1,0 +1,46 @@
+class MatrixSubtraction {
+    int rows;
+    int cols;
+    int[][] data;
+    MatrixSubtraction(int r, int c) {
+        rows = r;
+        cols = c;
+        data = new int[rows][cols];
+    }
+    void setValue(int i, int j, int value) {
+        data[i][j] = value;
+    }
+    MatrixSubtraction subtract(MatrixSubtraction m) {
+        MatrixSubtraction result = new MatrixSubtraction(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result.data[i][j] = this.data[i][j] - m.data[i][j];
+            }
+        }
+        return result;
+    }
+    void display() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(data[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        MatrixSubtraction m1 = new MatrixSubtraction(2, 2);
+        MatrixSubtraction m2 = new MatrixSubtraction(2, 2);
+        m1.setValue(0, 0, 9);
+        m1.setValue(0, 1, 8);
+        m1.setValue(1, 0, 7);
+        m1.setValue(1, 1, 6);
+        m2.setValue(0, 0, 1);
+        m2.setValue(0, 1, 2);
+        m2.setValue(1, 0, 3);
+        m2.setValue(1, 1, 4);
+        MatrixSubtraction result = m1.subtract(m2);
+        System.out.println("Result of Matrix Subtraction:");
+        result.display();
+}
+}
